@@ -1,0 +1,30 @@
+<div class="container">
+    <h3 class="my-4">Details of Item</h3>
+    <div class="row border" style="height:400px">
+      
+      <div class="col-6">
+        <div class="mx-2 my-2" >
+          <img class="img-fluid h-100"
+          
+               [src]="item.image"
+               [alt]="item.name" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="w-100 mx-2 my-2">
+            <h2>Name: {{ item.name }}</h2>          
+            <h4>Price: {{ item.price }}</h4>
+            <h4>Description: {{ item.description }}</h4>
+            <h5>Stock: {{ item.stock }}</h5>
+            <h5>Category: {{ category.name }}</h5>
+            <h6>Sub-category: {{ subCategory.name }}</h6>
+            <h6>GST%: {{ subCategory.gstPercent }}</h6>
+            <button 
+                type="button" 
+                class="btn btn-secondary"
+                (click)="addToCart(item.id)">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+</div>
+
