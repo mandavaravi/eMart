@@ -1,40 +1,93 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
-    <h2 class ="text-white">
-        <i class="material-icons">list</i>eMart</h2>
+<!-- <nav class="navbar navbar-expand-md ">
+        <img class="img-fluid rounded shadow-sm" src="https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png" alt="eMart">
+    
+    <div class="sm-4">
     <button 
         type="button" 
-        class="navbar-toggler" 
+        class="navbar-toggler btn-outline-secondary" 
         data-toggle="collapse" 
-        data-target="#collapse-nav-bar">
-        <span class="navbar-toggler-icon"></span>
+        data-target="#emart-nav-bar">
+        <span class="navbar-toggler-icon"><i class="material-icons big  align-middle">reorder </i></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapse-nav-bar">	
+    </div>
+
+    <div class="collapse navbar-collapse" id="emart-nav-bar">	
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item" *ngIf="!getLoggedIn()">
-                <a 
-                    class="nav-link  text-white" 
-                    routerLink="/">Login</a>
+            <li class="nav-item" >
+                <a class="nav-link " routerLink="/" *ngIf="!navBarToggle()"><strong >Login</strong></a>
             </li>
-            <li class="nav-item" *ngIf="getLoggedIn()">
-                <a 
-                    class="nav-link  text-white" 
-                    routerLink="/item-list">Item List</a>
+            <li class="nav-item" >
+                <a class="nav-link  " routerLink="/buyer-signup" *ngIf="!navBarToggle()"><strong>Register Buyer</strong></a>
             </li>
-            <li class="nav-item" *ngIf="getLoggedIn()">
-                <a 
-                    class="nav-link text-white" 
-                    routerLink="/cart-list">Cart</a>
+            <li class="nav-item" >
+                <a class="nav-link  " routerLink="/seller-signup" *ngIf="!navBarToggle()"><strong>Register Seller</strong></a>
             </li>
-            <li class="nav-item" *ngIf="getLoggedIn()">
-              <a 
-                  class="nav-link text-white" 
-                  routerLink="/bill-list">Purchase History</a>
+            <li class="nav-item" >
+                <a class="nav-link  " routerLink="/item-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong >Explore</strong></a>
             </li>
-            <li class="nav-item" *ngIf="getLoggedIn()">
-                <a 
-                    class="nav-link text-white" 
-                    routerLink="/log-out">Logout</a>
+            <li class="nav-item">
+                <a class="nav-link " routerLink="/cart-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong>Cart</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="/bill-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong>History</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="/seller-items" *ngIf="navBarToggle() && !sellerOrBuyer()"><strong>My Items</strong></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="/seller-add-item" *ngIf="navBarToggle() && !sellerOrBuyer()"><strong>Add Item</strong></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " routerLink="/log-out" *ngIf="navBarToggle()"><strong>Logout</strong></a>
             </li>
         </ul>
     </div>
   </nav>
+
+  <nav class="nav2 mb-4">
+    <marquee><p style="font-family: 'Times New Roman', Times, serif; font-size: 18pt; font-weight: bolder; color: #000000;">Sale...! Sale...! Sale...! </p></marquee>  
+  </nav> -->
+
+
+    <nav class="navbar navbar-expand-md navbar-light bg-info  ">
+        <img   class="img-fluid rounded-circle shadow-sm"
+        src="https://i.pinimg.com/originals/66/f7/72/66f77296282b5ab7c2780724802614c0.png" width="70"  height="20.53"  />
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapse-nav-bar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapse-nav-bar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" >
+                        <a class="nav-link " routerLink="/" *ngIf="!navBarToggle()"><strong >Login</strong></a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link  " routerLink="/buyer-signup" *ngIf="!navBarToggle()"><strong>Register Buyer</strong></a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link  " routerLink="/seller-signup" *ngIf="!navBarToggle()"><strong>Register Seller</strong></a>
+                    </li>
+                    <li class="nav-item" >
+                        <a class="nav-link  " routerLink="/item-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong >Explore</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/cart-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong>Cart</strong></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " routerLink="/bill-list" *ngIf="navBarToggle() && sellerOrBuyer()"><strong>History</strong></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " routerLink="/seller-items" *ngIf="navBarToggle() && !sellerOrBuyer()"><strong>My Items</strong></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " routerLink="/seller-add-item" *ngIf="navBarToggle() && !sellerOrBuyer()"><strong>Add Item</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="/log-out" *ngIf="navBarToggle()"><strong>Logout</strong></a>
+                    </li>
+                </ul>
+            </div>
+          </nav>
+
+          <nav class="nav2 mb-4">
+            <marquee><p style="font-family: 'Times New Roman', Times, serif; font-size: 18pt; font-weight: bolder; color: #000000;">Sale...! Sale...! Sale...! </p></marquee>  
+          </nav>

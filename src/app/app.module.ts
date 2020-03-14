@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { BuyerSignupComponent } from './emart/user/buyer-signup/buyer-signup.com
 import { SellerSignupComponent } from './emart/user/seller-signup/seller-signup.component';
 import { LogoutComponent } from './emart/user/logout/logout.component';
 import { HeaderComponent } from './emart/header/header.component';
+import { SellerItemsComponent } from './emart/item/seller-items/seller-items.component';
+import { SellerAddItemComponent } from './emart/item/seller-add-item/seller-add-item.component';
+
 
 @NgModule({
   declarations: [
@@ -27,12 +31,15 @@ import { HeaderComponent } from './emart/header/header.component';
     BuyerSignupComponent,
     SellerSignupComponent,
     LogoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    SellerItemsComponent,
+    SellerAddItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

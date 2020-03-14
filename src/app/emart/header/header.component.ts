@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../login.service';
+import { EmartService } from '../emart.service';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,22 @@ import { LoginService } from '../login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(protected loginService: LoginService) { }
+  logged: boolean;
+  constructor(protected loginService: LoginService, protected emartService: EmartService) { }
 
   ngOnInit(): void {
+    // let testBuyer : any = { buyerId: 0 };
+    // localStorage.setItem("currentBuyer" , JSON.stringify(testBuyer));
   }
 
-  getLoggedIn(){
-    return this.loginService.loggedIn;
+  navBarToggle(){
+    return this.loginService.isLogged();
+  }
+
+  sellerOrBuyer(){
+    // returns false for seller
+    // true for buyer
+    // console.log("header seller or buyer : " + this.loginService.isSellerOrBuyer());
+    return this.loginService.isSellerOrBuyer();
   }
 }

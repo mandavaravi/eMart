@@ -7,6 +7,10 @@ import { BillViewComponent } from './emart/bill/bill-view/bill-view.component';
 import { BillListComponent } from './emart/bill/bill-list/bill-list.component';
 import { LoginComponent } from './emart/user/login/login.component';
 import { LogoutComponent } from './emart/user/logout/logout.component';
+import { BuyerSignupComponent } from './emart/user/buyer-signup/buyer-signup.component';
+import { SellerSignupComponent } from './emart/user/seller-signup/seller-signup.component';
+import { SellerItemsComponent } from './emart/item/seller-items/seller-items.component';
+import { SellerAddItemComponent } from './emart/item/seller-add-item/seller-add-item.component';
 
 const routes: Routes = [{
                           path: '',
@@ -35,7 +39,25 @@ const routes: Routes = [{
                         {
                           path: 'bill-list',
                           component: BillListComponent
-                        }];
+                        },
+                        {
+                          path: 'buyer-signup',
+                          component: BuyerSignupComponent
+                        },
+                        {
+                          path: 'seller-signup',
+                          component: SellerSignupComponent
+                        },
+                        {
+                          path: 'seller-items',
+                          component: SellerItemsComponent
+                        },
+                        {
+                          path: 'seller-add-item',
+                          component: SellerAddItemComponent
+                        }
+                      ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

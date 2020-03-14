@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmartService } from '../../emart.service';
-import { Cart } from '../../cart';
-import { Item } from '../../item';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -10,23 +10,43 @@ import { Item } from '../../item';
 })
 export class CartListComponent implements OnInit {
   
-  cartItems: Item[];
-  showCart: boolean;
-  constructor(protected emartService:EmartService) { }
+  cartItems: any;
+  isEmpty: boolean;
+  currentBuyer: any;
+  constructor(protected emartService:EmartService, protected router: Router) { }
 
   ngOnInit(): void {
-    this.cartItems = this.emartService.getAllCart();
-    if(this.cartItems.length==0){
-      this.showCart=false;
+
+
+    if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
+      this.cartItems = this.emartService.getAllCart();
+    
+      if(this.cartItems.length==0){
+        this.isEmpty=false;
+      }
+      else{
+        this.isEmpty=true;
+      }
     }
     else{
-      this.showCart=true;
+      this.router.navigate(['/']);
     }
+
   }
 
   deleteCartItem(itemNo: number){
-    this.emartService.deleteCartItem(itemNo);
-    this.cartItems = this.emartService.getAllCart();
+    this.cartItems = this.emartService.deleteCartItem(itemNo);
+    if(this.cartItems.length==0){
+      this.isEmpty=false;
+    }
+    else{
+      this.isEmpty=true;
+    }
+  }
+
+  checkOut(Items: any){
+    this.emartService.setAllCart(Items);
+    this.router.navigate(['bill-view']);
   }
 
 }

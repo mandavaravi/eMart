@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmartService } from '../../emart.service';
-import { Item } from '../../item';
-import { Category } from '../../category';
-import { SubCategory } from '../../sub-category';
+
 
 @Component({
   selector: 'app-item-display',
@@ -12,29 +10,41 @@ import { SubCategory } from '../../sub-category';
 })
 export class ItemDisplayComponent implements OnInit {
 
-  item:Item;
-  category: Category;
-  subCategory: SubCategory;
+  item:any;
 
   constructor(protected activatedRoute: ActivatedRoute,
               protected emartService: EmartService,
               protected router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute
-        .paramMap
-        .subscribe(
-                    (param)=>{
-                                let id = param.get('iId');  
-                                this.item = this.emartService.getItem(id);
-                                this.category = this.emartService.getCategory(this.item.categoryId);
-                                this.subCategory = this.emartService.getSubCategory(this.item.subCategoryId);  
-                              }
-                  );
+
+
+    if(JSON.parse(localStorage.getItem("currentBuyer")).buyerId != 0){
+      
+      this.activatedRoute.paramMap.subscribe(
+        (param)=>{
+                    let id = param.get('iId');  
+                    this.emartService.getItem(id).subscribe((response)=> {
+                      this.item =  response;
+                    }
+                    );                                   
+                  }
+      );
+    }
+    else{
+      this.router.navigate(['/']);
+    }
+
+
+
+
+    
+
+
   }
 
-  addToCart(itemId: number){
-    this.emartService.addToCart(itemId);
+  addToCart(item: any){
+    this.emartService.addToCart(item);
     this.router.navigate(['item-list']);
   }
 
